@@ -1,0 +1,684 @@
+@import "parts/loader";
+@import "parts/varmix";
+@import "parts/base";
+@import "parts/imported";
+
+#msg {
+    display: inline-block;
+    margin-left: 2rem;
+    font-family: "Roboto", sans-serif;
+
+    @include small {
+        margin-left: 1rem;
+        font-size: 1.3rem;
+    }
+}
+
+.red {
+    color: red;
+}
+
+.green {
+    color: green;
+}
+
+.menu {
+    position: absolute;
+    top: 0;
+    z-index: 10;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2rem 5rem;
+    backface-visibility: hidden;
+
+    @include medium {
+        padding: 1rem 2.5rem;
+    }
+
+    &__logo {
+        width: 12rem;
+
+        @include medium {
+            width: 10rem;
+        }
+
+        svg path,
+        svg circle {
+            transition: all .3s linear;
+        }
+
+        svg:hover path {
+            fill: #F92621;
+        }
+
+        svg:hover circle {
+            fill: #311284;
+        }
+    }
+
+    &__link {
+        backface-visibility: hidden;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        visibility: visible;
+        transition: all .2s ease-in;
+        opacity: 1;
+
+        @include medium {
+            transition: all .3s linear;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #311284;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            visibility: hidden;
+            opacity: 0;
+            font-size: 3rem;
+            text-transform: uppercase;
+        }
+
+        &--item {
+            color: #fff;
+            padding-right: 4rem;
+            backface-visibility: hidden;
+            transition: all .2s ease;
+            display: inline-block;
+            text-decoration: none;
+            font-family: 'Quicksand', serif;
+            font-size: 1.9rem;
+
+            &:last-child {
+                padding: 0;
+
+                @include medium {
+                    padding: 1rem;
+                }
+            }
+
+            @include cstm (830px) {
+                padding-right: 3rem;
+                font-size: 1.5rem;
+            }
+
+            @include medium {
+                background-image: linear-gradient(120deg, transparent 0%, transparent 50%, white 50%);
+                background-size: 250%;
+                transition: all .2s ease-out;
+                width: 30rem;
+                text-align: center;
+                font-size: 2.5rem;
+                padding: 1rem;
+            }
+
+            @include mmedium {
+                &::after {
+                    content: '';
+                    display: block;
+                    width: 0;
+                    height: 2px;
+                    margin-top: .5rem;
+                    background-image: $rainbow;
+                    transition: width .3s;
+                }
+
+                &:hover::after {
+                    width: 120%;
+                }
+
+            }
+
+            &:hover {
+                color: $primary;
+
+                @include medium {
+                    border: none;
+                    background-position: 100%;
+                }
+            }
+        }
+    }
+}
+
+.hero {
+    background-image: url(../img/bg7.svg);
+    position: relative;
+    height: 100vh;
+    background-size: cover;
+    background-position: top;
+    color: #292760;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    @include small {
+        background-image: url(../img/bg7small.svg);
+    }
+
+    @include xmall {
+        background-image: url(../img/bg7xmall.svg);
+    }
+
+    .spans {
+        display: inline-block;
+        backface-visibility: hidden;
+        transition: color .2s ease;
+        opacity: 0;
+        user-select: none;
+
+        &:hover {
+            color: $primary;
+        }
+    }
+
+    &__sideimg {
+        width: 45rem;
+
+        @include cstm (860px) {
+            width: 30rem;
+        }
+
+        @include medium {
+            width: 25rem;
+        }
+
+        @include small {
+            display: none;
+        }
+    }
+
+    &__text {
+        padding-left: 5rem;
+        font-family: 'Black Han Sans', sans-serif;
+
+        @include medium {
+            padding-left: 3.3rem;
+        }
+
+        @include small {
+            padding-left: 2.5rem
+        }
+
+        &--heading {
+            font-style: normal;
+            font-weight: 400;
+            font-size: 4rem;
+            line-height: 1.2;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+
+            @include cstm(895px) {
+                font-size: 3.4rem;
+            }
+
+            @include cstm(772px) {
+                font-size: 3rem;
+            }
+
+            @include cstm(730px) {
+                font-size: 2.8rem;
+            }
+
+            @include cstm(710px) {
+                font-size: 3rem;
+            }
+
+            @include xmall {
+                font-size: 2.2rem;
+            }
+
+            &--word {
+                margin: -2rem 0;
+            }
+        }
+    }
+
+    &__contact--btn {
+        opacity: 0;
+        cursor: pointer;
+        @include btnstyle;
+    }
+}
+
+.about {
+    display: flex;
+    justify-content: space-between;
+
+    @include small {
+        flex-direction: column;
+    }
+
+    &__img {
+        object-fit: cover;
+        width: 35%;
+        height: 35%;
+        transition: all .2s ease-in;
+        backface-visibility: hidden;
+
+        @include medium {
+            height: 25rem;
+            width: 25rem;
+        }
+
+        @include small {
+            height: 30rem;
+            width: 30rem;
+            margin: 0 auto 3rem;
+        }
+
+        @include xmall {
+            height: 25rem;
+            width: 25rem;
+        }
+    }
+
+    &__txt {
+        width: 60%;
+
+        @include small {
+            width: 100%;
+        }
+
+        .main {
+            justify-content: left;
+
+            @include small {
+                justify-content: center;
+            }
+        }
+
+        .secondary_heading {
+            @include small {
+                text-align: center;
+            }
+        }
+
+        p {
+            margin-bottom: 3rem;
+            line-height: 180%;
+            text-align: justify;
+        }
+    }
+}
+
+.skills {
+    font-size: 2rem;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+
+    .main {
+
+        .main_heading {
+
+            @include xmall {
+                font-size: 2rem;
+            }
+        }
+    }
+
+    @include small {
+        flex-direction: column;
+        align-items: center;
+        font-size: 1.6rem;
+    }
+
+    &__bar {
+        width: 275px;
+        height: 8px;
+
+        svg path:first-child {
+            stroke: #311284;
+
+        }
+
+        svg path:nth-child(2) {
+            stroke: #311284;
+        }
+
+        @include cstm (980px) {
+            width: 320px;
+        }
+
+        @include medium {
+            width: 250px;
+        }
+
+        @include small {
+            width: 270px;
+        }
+    }
+
+    li {
+        margin: 1rem 2rem;
+    }
+
+    &__heading {
+        text-align: center;
+    }
+
+    &__container {
+        margin: 2rem 0;
+    }
+}
+
+.project {
+    padding-left: 0;
+    padding-right: 0;
+
+    .project__showcase {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+    }
+
+    //screen-container
+    .project__screen {
+        position: relative;
+        height: 18rem;
+        width: 29rem;
+        margin: 3rem;
+        cursor: default;
+        background-size: cover;
+        background-position: center;
+        border-radius: 5px;
+        transition: transform .2s linear;
+        backface-visibility: hidden;
+        box-shadow: 1rem 1rem 5rem rgba(0, 0, 0, .4);
+
+        @include medium {
+            height: 16rem;
+            width: 26rem;
+        }
+
+        @include small {
+            height: 17rem;
+            width: 28rem;
+            margin: 1.5rem 0;
+        }
+
+        &::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-color: black;
+            border-radius: 5px;
+            opacity: 0;
+            transition: all .3s linear;
+        }
+
+        &::after {
+            content: 'See Project';
+            cursor: pointer;
+            position: absolute;
+            opacity: 0;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            transition: all .3s linear;
+            backface-visibility: hidden;
+            color: #fff;
+            font-weight: lighter;
+            border: 1px solid #fff;
+            border-radius: .5rem;
+            padding: .5rem 1rem;
+        }
+
+        &:hover {
+            transform: translateY(-5%);
+            box-shadow: 2rem 2rem 6rem rgba(0, 0, 0, .4);
+
+        }
+
+        &:hover::before {
+            opacity: .5;
+        }
+
+        &:hover::after {
+            opacity: 1;
+        }
+    }
+}
+
+section.contact {
+    padding-bottom: 10rem;
+    @include small {
+        padding: 2rem 1.5rem 5rem;
+    }
+}
+.contact {
+    padding-top: 2rem;
+
+    .main {
+        margin-bottom: 0;
+    }
+
+    &__text {
+        text-align: center;
+        margin-bottom: 5rem;
+        @include small {
+            margin-bottom: 2.5rem;
+        }
+    }
+}
+
+.form {
+    width: 80%;
+    max-width: 80rem;
+    height: 45rem;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-image: url(../img/contactbg.svg);
+    background-position: center;
+    background-size: cover;
+    border-radius: .5rem;
+    position: relative;
+    box-shadow: 1rem 1rem 3rem rgba(0, 0, 0, .4);
+
+    @include medium {
+        width: 100%;
+        height: 40rem;
+    }
+
+    @include small {
+        height: 35rem;
+    }
+
+    &__sideimg {
+        width: 30%;
+
+        @include small {
+            display: none;
+        }
+    }
+
+    &__group {
+        width: 75%;
+        height: 100%;
+        padding: 5rem;
+        border-top-right-radius: .5rem;
+        border-bottom-right-radius: .5rem;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        background: #fff;
+
+        @include small {
+            padding: 1.3rem;
+            width: 99%;
+            margin-left: auto;
+        }
+
+        &--input,
+        &--message {
+            width: 100%;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            border: none;
+            border-bottom: 2px solid #292760;
+            font-family: "Roboto", sans-serif;
+            outline: none;
+            font-size: 1.5rem;
+            background: transparent;
+            transition: all .3s ease;
+
+            @include medium {
+                font-size: 1.5rem;
+                border-bottom-width: 1.5px;
+            }
+
+            @include small {
+                padding: .5rem;
+                font-size: 1.4rem;
+            }
+
+            &:focus:invalid {
+                border-bottom: 2px solid $primary;
+            }
+
+            &:focus {
+                border-bottom: 2px solid #0aea9f;
+            }
+        }
+
+        &--btn {
+            width: 10rem;
+            height: 4rem;
+            display: inline-block;
+            line-height: .1;
+            padding: 1rem;
+            background: #292760;
+            color: #fff;
+            font-size: 1.5rem;
+            font-family: "Roboto", sans-serif;
+            transition: all .150s linear;
+            border: 2px solid transparent;
+            cursor: pointer;
+
+            @include medium {
+                width: 8rem;
+                height: 3rem;
+                font-size: 1.3rem;
+            }
+
+            &:hover {
+                background: transparent;
+                color: $primary;
+                border: 2px solid currentColor;
+                
+                @include small {
+                    border: 1.4px solid currentColor;
+                }
+            }
+
+            &:focus {
+                outline: none;
+            }
+
+            &.loading {
+                height: 4rem;
+                width: 4rem;
+                padding: 0;
+
+                @include medium {
+                    height: 3rem;
+                    width: 3rem;
+                }
+
+                border-width: 2px;
+                border-radius: 50%;
+                border-color: #9e9e9e #9e9e9e #9e9e9e #F92621;
+                background: #fff;
+
+                font-size: 0;
+                color: transparent;
+                pointer-events: none;
+                animation: spin 1.2s infinite linear;
+            }
+        }
+
+        @keyframes spin {
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
+        }
+    }
+}
+
+
+.footer {
+    width: 100%;
+    background-color: rgba(119, 119, 119, .2);
+    text-align: center;
+
+    &__link {
+        &--social {
+            color: inherit;
+        }
+    }
+
+    .fab {
+        transition: all .2s linear;
+        font-size: 5rem;
+        margin: 0 2rem;
+        color: #311284;
+        backface-visibility: hidden;
+
+        @include small {
+            font-size: 4rem;
+            margin: 0 1rem;
+        }
+
+        @include xmall {
+            font-size: 2.8rem;
+        }
+
+        &:hover {
+            color: #F92621;
+            text-shadow: -2px 4px 8px #4c4c4c;
+        }
+    }
+
+    hr {
+        width: 75%;
+        margin: 5rem auto 3rem;
+
+        @include xmall {
+            margin: 3rem auto 1rem;
+        }
+    }
+
+    &__logo {
+        margin: 0 auto;
+        width: 25rem;
+
+        svg path,
+        svg circle {
+            transition: all .3s linear;
+        }
+
+        svg:hover path {
+            fill: #F92621;
+        }
+
+        svg:hover circle {
+            fill: #311284;
+        }
+    }
+}

@@ -1,0 +1,134 @@
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+::selection {
+    background-color: $primary;
+    color: white;
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent; 
+}
+ 
+::-webkit-scrollbar-thumb {
+    background: #555; 
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #555; 
+}
+
+html {
+    font-size: 62.5%;
+    font-family: "Noto Serif", serif;
+}
+
+body {
+    font-size: 1.6rem;
+    color: rgb(74, 71, 71);
+    overflow: hidden;
+
+    @include medium {
+        font-size: 1.4rem;
+    }
+}
+
+li {
+    list-style: none;
+}
+
+a:link,
+a:visited {
+    text-decoration: none;
+}
+
+section {
+    width: 100%;
+    padding: 6.5rem 5rem;
+
+    @include medium {
+        padding: 3rem;
+    }
+
+    @include small {
+        padding: 2rem;
+    }
+}
+
+section:nth-last-child(2n) {
+    background-color: rgba(119, 119, 119, 0.081);
+}
+
+.main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 5rem;
+
+    @include medium {
+        margin-bottom: 3rem;
+    }
+
+    @include small {
+        margin-bottom: 2rem;
+    }
+
+    &_heading {
+        font-size: 4.3rem;
+        font-weight: normal;
+        text-transform: capitalize;
+        font-family: 'Pacifico', cursive;
+        user-select: none;
+
+        @include medium {
+            font-size: 3rem;
+        }
+
+        @include small {
+            font-size: 2.5rem;
+        }
+
+        &:hover .main__highlight {
+            background-size: 100% 85%;
+            cursor: context-menu;
+        }
+    }
+
+    &__highlight {
+        background-image: linear-gradient(120deg, #84fab0 0%, #8fd3f4 100%);
+        background-repeat: no-repeat;
+        background-size: 100% 10%;
+        background-position: 0 90%;
+        transition: background-size 0.2s ease-in;
+        color: rgb(76, 76, 76);
+        padding: 0 .4rem
+    }
+}
+
+.secondary_heading {
+    margin-bottom: 2rem;
+    font-size: 2.5rem;
+    font-weight: bold;
+    font-family: 'Pontano Sans', sans-serif;
+
+    @include medium {
+        font-size: 2rem;
+    }
+}
+
+.disablescroll {
+    overflow: hidden;
+}
+
+.hidden {
+    display: none;
+}
